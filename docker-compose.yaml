@@ -1,0 +1,14 @@
+name: ENTER_NAME
+services:
+    nginx:
+        container_name: ENTER_NAME
+        ports:
+            - 80:8080
+            - 443:443
+        volumes:
+            - ${PWD}:/var/www/html
+            - ${PWD}/config/nginx.conf:/etc/nginx/conf.d/server.conf:ro
+            - ${PWD}/config/php.ini:/etc/php84/conf.d/settings.ini:ro
+            - ${PWD}/config/php-fpm.conf:/etc/php84/php-fpm.d/server.conf:ro
+            - ${PWD}/config/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro
+        image: nginx-php-ssmtp
